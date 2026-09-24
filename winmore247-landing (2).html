@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WinMore247 | Win More. Play 24/7</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #0a3d5c 0%, #0d4a6e 30%, #0a3550 70%, #082a40 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+      padding: 2rem 1.25rem 6rem;
+    }
+
+    /* Soft radial glow behind logo */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(99, 140, 255, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 420px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Brand name top */
+    .brand-name {
+      font-size: clamp(2rem, 7vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: linear-gradient(90deg, #7dd3fc 0%, #a78bfa 50%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.6rem;
+      animation: fadeInDown 0.7s ease-out;
+    }
+
+    /* Top tagline */
+    .top-tagline {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      animation: fadeIn 0.8s ease-out 0.15s both;
+    }
+
+    .top-tagline .sparkle {
+      color: #fbbf24;
+      font-size: 0.75rem;
+    }
+
+    /* Countdown number */
+    .countdown-num {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 1.25rem;
+      line-height: 1;
+      text-shadow: 0 0 24px rgba(251, 191, 36, 0.45);
+      animation: fadeIn 0.8s ease-out 0.25s both, pulse-num 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-num {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.06); opacity: 0.9; }
+    }
+
+    /* Logo circle */
+    .logo-circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #7c6bff 0%, #5b8def 40%, #4f7cff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.75rem;
+      box-shadow:
+        0 0 0 8px rgba(99, 120, 255, 0.25),
+        0 0 0 16px rgba(99, 120, 255, 0.12),
+        0 12px 40px rgba(0, 0, 0, 0.35);
+      position: relative;
+      animation: fadeIn 0.9s ease-out 0.35s both, float 4s ease-in-out infinite;
+    }
+
+    .logo-circle::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(167, 139, 250, 0.5), rgba(96, 165, 250, 0.3), transparent);
+      z-index: -1;
+      animation: spin-slow 8s linear infinite;
+    }
+
+    .logo-text {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes spin-slow {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Social proof */
+    .social-proof {
+      margin-bottom: 0.75rem;
+      animation: fadeIn 0.9s ease-out 0.45s both;
+    }
+
+    .social-proof h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 0.5rem;
+    }
+
+    .features {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .features .check {
+      color: #4ade80;
+      font-size: 1rem;
+    }
+
+    /* CTA Button */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.5rem;
+      margin-bottom: 1.25rem;
+      padding: 0.95rem 2.75rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: inherit;
+      color: #1a1a1a;
+      background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow:
+        0 4px 20px rgba(245, 158, 11, 0.45),
+        0 0 0 0 rgba(245, 158, 11, 0.4);
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease-out 0.55s both, pulse-btn 2.2s ease-in-out 1.2s infinite;
+      letter-spacing: 0.03em;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow:
+        0 8px 28px rgba(245, 158, 11, 0.55),
+        0 0 0 4px rgba(245, 158, 11, 0.2);
+    }
+
+    .cta-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    @keyframes pulse-btn {
+      0%, 100% {
+        box-shadow: 0 4px 20px rgba(245, 158, 11, 0.45), 0 0 0 0 rgba(245, 158, 11, 0.4);
+      }
+      50% {
+        box-shadow: 0 4px 24px rgba(245, 158, 11, 0.55), 0 0 0 10px rgba(245, 158, 11, 0);
+      }
+    }
+
+    /* Bottom tagline */
+    .bottom-tagline {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      animation: fadeIn 0.9s ease-out 0.65s both;
+    }
+
+    .bottom-tagline .diamond {
+      color: #60a5fa;
+    }
+
+    .bottom-tagline .globe {
+      font-size: 0.9rem;
+    }
+
+    .bottom-tagline strong {
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    /* Managed by */
+    .managed-by {
+      font-size: 0.8rem;
+      color: #64748b;
+      animation: fadeIn 0.9s ease-out 0.75s both;
+    }
+
+    .managed-by a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .managed-by a:hover {
+      color: #93c5fd;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #0a1628;
+      padding: 0.9rem 1.25rem 1rem;
+      text-align: center;
+      z-index: 20;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .disclaimer {
+      font-size: 0.7rem;
+      color: #64748b;
+      line-height: 1.5;
+      max-width: 640px;
+      margin: 0 auto 0.5rem;
+    }
+
+    .footer-links {
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #e2e8f0;
+    }
+
+    .footer-links span {
+      margin: 0 0.4rem;
+      color: #475569;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      body {
+        padding: 1.5rem 1rem 7rem;
+      }
+      .logo-circle {
+        width: 140px;
+        height: 140px;
+      }
+      .logo-text {
+        font-size: 1rem;
+      }
+      .countdown-num {
+        font-size: 1.65rem;
+      }
+      .cta-btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 0.9rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Brand Name -->
+    <h1 class="brand-name">WINMORE247</h1>
+
+    <!-- Top tagline -->
+    <p class="top-tagline">
+      <span class="sparkle">✨</span>
+      Secure • Fast • Seamless
+      <span class="sparkle">✨</span>
+    </p>
+
+    <!-- Countdown -->
+    <div class="countdown-num" id="countdown">5</div>
+
+    <!-- Logo Circle -->
+    <div class="logo-circle">
+      <div class="logo-text">WINMORE<br>247</div>
+    </div>
+
+    <!-- Social proof -->
+    <div class="social-proof">
+      <h2>Thousands of users already joined</h2>
+      <p class="features">
+        <span class="check">✅</span>
+        Quick signup • Instant access
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <a href="https://www.winmore247.club/register" class="cta-btn" id="registerBtn">
+      GET STARTED
+    </a>
+
+    <!-- Bottom tagline -->
+    <p class="bottom-tagline">
+      <span class="diamond">💎</span>
+      Win More. Play 24/7
+      <span class="globe">🌐</span>
+      – <strong>Join Now</strong>
+    </p>
+
+    <!-- Managed by -->
+    <p class="managed-by">
+      Ads Managed by
+      <a href="https://telegram.me/+TRlJl628l-FkMWE9" target="_blank" rel="noopener noreferrer">@newgroww</a>
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="disclaimer">
+      <strong>Disclaimer:</strong> For educational purposes only. Trading and investing in financial markets involves risk, including possible loss of capital. Past performance is not indicative of future results. This is not financial advice.
+    </p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <span>|</span>
+      <a href="#">Contact Us</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const redirectUrl = 'https://www.winmore247.club/register';
+      let seconds = 5;
+      const countdownEl = document.getElementById('countdown');
+
+      const timer = setInterval(() => {
+        seconds--;
+        if (seconds >= 0) {
+          countdownEl.textContent = seconds;
+        }
+        if (seconds <= 0) {
+          clearInterval(timer);
+          window.location.href = redirectUrl;
+        }
+      }, 1000);
+
+      // Safety fallback
+      setTimeout(() => {
+        window.location.href = redirectUrl;
+      }, 5500);
+    })();
+  </script>
+</body>
+</html>
